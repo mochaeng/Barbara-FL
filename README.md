@@ -1,4 +1,4 @@
-# Federate Learning 
+# Federated Learning 
 
 ## Description
 
@@ -41,11 +41,19 @@ python fl_server.py --server-port=50052
 
 ###### Arguments:
 
-- **'--server-port'**: The port for the FL server;
-- **'--num-rounds'**: Number of rounds the server will conduct in the trainning process;
-- **'--time-to-wait'**: Time in seconds to wait for new clients before the trainning process start;
-- **'--use-cuda'**: Choose if you want to use Cuda during the training proccess. Default to True;
-- run **'--help'** to see the options.
+```
+--server-port 
+    The port for the FL server;
+--num-rounds
+    Number of rounds the server will conduct in the trainning process;
+--time-to-wait 
+    Time in seconds to wait for new clients before the trainning process start;
+--use-cuda 
+    Choose if you want to use Cuda during the training proccess. Default to True;
+--help 
+    to see the options.
+```
+
 
 #### Client
 
@@ -57,9 +65,14 @@ python fl_client.py --client-id=1 --server-port=50052
 
 ###### Arguments
 
-- **'--client-id'**: (Required) The ID of your client. Must be between 1 and 5;
-- **'--server-port'**: The port for the FL server;
-- **'--use-cuda'**: Choose if you want to use Cuda during the training proccess. Default to True.
+```
+--client-id 
+    (Required) The ID of your client. Must be between 1 and 5;
+--server-port 
+    The port for the FL server;
+--use-cuda 
+    Choose if you want to use Cuda during the training proccess. Default to True.
+```
 
 #### General 
 
@@ -119,3 +132,7 @@ deserialized_data = json.loads(data)
 - [client_helper.py](client_helper.py): Read the data for the client and create the tensors
 - [neural_net_helper.py](neural_net_helper.py): Code for training, test and calculate the trainning loss
 - [socket_methods.py](socket_methods.py): Code for receiving large stuff on a socket
+
+## Reference
+
+I found the data and main ideia in [this repo](https://github.com/XuRay13/Federated-Machine-Learning) 

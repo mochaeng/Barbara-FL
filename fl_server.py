@@ -4,6 +4,7 @@ import json
 import pickle
 import struct
 import argparse
+from threading import Thread, Lock
 
 from socket_methods import receiver
 from neural_net_helper import NeuralNet
@@ -13,24 +14,24 @@ import torch
 
 class ServerStage(Enum):
     WAITING_FIRST_CLIENT = 1
-    WAITING_30_SECONDS = 2
+    WAIT_T_SECONDS = 2
     TRAINING_MODEL = 3
 
 
 class Server:
 
     def __init__(self, model: NeuralNet, time_to_wait, num_rounds, host='localhost',
-                 port=50052, num_clients=2) -> None:
+                 port=50052) -> None:
         self.HOST = host
         self.PORT = port
         self.connected_clients: list[socket.socket] = []
         self.clients_info = {}
         self.current_stage: ServerStage = ServerStage.WAITING_FIRST_CLIENT
         self.global_model = model
-        self.TARGET_NUM_CLIENTS: int = num_clients
         self.num_rounds = num_rounds
         self.total_data_size = 0
         self.time_to_wait = time_to_wait
+        self.mutex = Lock()
 
     def handle_connection(self, conn: socket.socket, addr):
         print(f'Node has connected with address: {addr}')
@@ -57,12 +58,13 @@ class Server:
 
                 client_id = json_data['id']
                 data_size = json_data['data_size']
-                self.clients_info[client_id] = {
-                    'data_size': data_size, 'addr': addr}
-                self.total_data_size += data_size
 
-                self.connected_clients.append(conn)
-                self.current_stage = ServerStage.WAITING_30_SECONDS
+                with self.mutex:
+                    self.clients_info[client_id] = {
+                        'data_size': data_size, 'addr': addr}
+                    self.total_data_size += data_size
+                    self.connected_clients.append(conn)
+                    self.current_stage = ServerStage.WAIT_T_SECONDS
 
                 data = {'header': '<SUCCESS>',
                         'msg': 'You are now participating in the training process'}
@@ -153,7 +155,8 @@ class Server:
             while True:
                 try:
                     conn, addr = s.accept()
-                    self.handle_connection(conn, addr)
+                    # self.handle_connection(conn, addr)
+                    Thread(target=self.handle_connection, args=[conn, addr]).start()
                 except socket.timeout:
                     break
 

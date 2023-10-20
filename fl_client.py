@@ -75,8 +75,7 @@ class Client:
 
                 global_model = deserialized_data['model']
 
-                net_helper = NetHelper(
-                    global_model, self.user_data.data, self.device)
+                net_helper = NetHelper(global_model, self.user_data.data, self.device)
                 training_loss = net_helper.train_loss()
                 test_loss = net_helper.test()
 
@@ -87,8 +86,7 @@ class Client:
                 net_helper.train()
 
                 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as model_socket:
-                    model_socket.setsockopt(
-                        socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+                    model_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
                     model_socket.connect((self.SERVER_HOST, self.SERVER_PORT))
 
                     model_to_send = self.prepare_model_to_send(net_helper)
@@ -126,6 +124,5 @@ if __name__ == '__main__':
 
     user_data = client_helper.UserData(train_location_path, test_location_path)
 
-    client = Client(client_id, user_data, device=device,
-                    server_port=server_port)
+    client = Client(client_id, user_data, device=device, server_port=server_port)
     client.start()
