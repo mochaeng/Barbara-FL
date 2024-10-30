@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "barbara-fl"
+version = "0.1.0"
+description = "A simple federated learning library"
+authors = ["Luiz Campos <campos.antoonio@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+package-mode = true
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+torch = "^2.5.1"
+
+
+[tool.pyright]
+include = ["barbara_fl"]
+exclude = ["**/__pycache__"]
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
