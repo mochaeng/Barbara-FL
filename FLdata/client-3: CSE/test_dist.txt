@@ -1,0 +1,17 @@
+test
+Attack
+Benign                      88047
+DDOS attack-HOIC             5721
+DoS attacks-Hulk             2290
+DDoS attacks-LOIC-HTTP       1627
+Bot                           757
+Infilteration                 616
+SSH-Bruteforce                503
+DoS attacks-GoldenEye         147
+FTP-BruteForce                137
+DoS attacks-SlowHTTPTest       75
+DoS attacks-Slowloris          50
+DDOS attack-LOIC-UDP           11
+Brute Force -Web               11
+Brute Force -XSS                5
+SQL Injection                   2

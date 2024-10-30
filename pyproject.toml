@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "barbara-fl"
 version = "0.1.0"
-description = "A simple federated learning library"
+description = "A simple federated learning simulation library for tabular data"
 authors = ["Luiz Campos <campos.antoonio@gmail.com>"]
 license = "MIT"
 readme = "README.md"
@@ -11,11 +11,15 @@ package-mode = true
 [tool.poetry.dependencies]
 python = "^3.10"
 torch = "^2.5.1"
+pandas = "^2.2.3"
+scikit-learn = "^1.5.2"
+pyarrow = "^18.0.0"
 
 
 [tool.pyright]
 include = ["barbara_fl"]
-exclude = ["**/__pycache__"]
+exclude = ["**/__pycache__", "**/lib"]
+ignore = [".venv", "**/lib"]
 
 
 [build-system]

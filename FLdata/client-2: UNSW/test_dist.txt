@@ -1,0 +1,12 @@
+test
+Attack
+Benign            96023
+Exploits           1320
+Fuzzers             933
+Generic             693
+Reconnaissance      535
+DoS                 242
+Analysis             96
+Backdoor             91
+Shellcode            60
+Worms                 7

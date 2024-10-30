@@ -1,0 +1,17 @@
+train
+Attack
+Benign                      132069
+DDOS attack-HOIC              8581
+DoS attacks-Hulk              3435
+DDoS attacks-LOIC-HTTP        2439
+Bot                           1136
+Infilteration                  924
+SSH-Bruteforce                 754
+DoS attacks-GoldenEye          220
+FTP-BruteForce                 206
+DoS attacks-SlowHTTPTest       112
+DoS attacks-Slowloris           76
+DDOS attack-LOIC-UDP            17
+Brute Force -Web                17
+Brute Force -XSS                 7
+SQL Injection                    4

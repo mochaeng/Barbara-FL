@@ -1,0 +1,7 @@
+test
+Attack
+DDoS              48544
+DoS               44152
+Reconnaissance     6940
+Benign              358
+Theft                 6

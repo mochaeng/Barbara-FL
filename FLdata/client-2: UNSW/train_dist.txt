@@ -1,0 +1,12 @@
+train
+Attack
+Benign            144035
+Exploits            1980
+Fuzzers             1400
+Generic             1039
+Reconnaissance       802
+DoS                  364
+Analysis             144
+Backdoor             136
+Shellcode             89
+Worms                 10
